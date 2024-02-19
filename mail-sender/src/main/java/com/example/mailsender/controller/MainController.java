@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +20,13 @@ public class MainController {
     }
 
     @GetMapping("/registration")
-    @ResponseBody
-    public String registration() {
+    public String getRegistration() {
         return "registration";
+    }
+
+    @PostMapping("/registration")
+    public String postRegistration(){
+        return "home";
     }
 
     @GetMapping("/")
