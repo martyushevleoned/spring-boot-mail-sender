@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Mail Sender App</title>
+</head>
+<body>
+<div>
+
+    <form th:action="@{/login}" method="post">
+        <div class="content no-padding">
+            <input type="text" name="username" placeholder="username"/>
+        </div>
+        <div class="content no-padding">
+            <input type="password" name="password" placeholder="password"/>
+        </div>
+        <div class="content no-padding">
+            <button type="submit">Sign In</button>
+        </div>
+    </form>
+
+    <form th:action="@{/registration}" method="get">
+        <div class="content no-padding">
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
