@@ -17,34 +17,35 @@ public class BeanConfig {
         return new BCryptPasswordEncoder(8);
     }
 
-    @Value("spring.mail.host")
+    @Value("${spring.mail.host}")
     private String host;
 
-    @Value("spring.mail.username")
+    @Value("${spring.mail.username}")
     private String username;
 
-    @Value("spring.mail.password")
+    @Value("${spring.mail.password}")
     private String password;
 
-    @Value("spring.mail.port")
-    private String port;
+    @Value("${spring.mail.port}")
+    private int port;
 
-    @Value("spring.mail.protocol")
+    @Value("${spring.mail.protocol}")
     private String protocol;
 
-    @Value("mail.debug")
+    @Value("${mail.debug}")
     private String debug;
 
     @Bean
-    public JavaMailSender getMailSender(){
+    public JavaMailSender getMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(host);
-        mailSender.setPort(Integer.parseInt(port));
+        mailSender.setPort(port);
         mailSender.setUsername(username);
         mailSender.setPassword(password);
 
         Properties properties = mailSender.getJavaMailProperties();
+
         properties.setProperty("mail.transport.protocol", protocol);
         properties.setProperty("mail.debug", debug);
 
