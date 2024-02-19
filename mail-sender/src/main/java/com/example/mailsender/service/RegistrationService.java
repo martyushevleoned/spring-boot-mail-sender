@@ -25,7 +25,7 @@ public class RegistrationService {
     @Autowired
     private MailSender mailSender;
 
-    @Value("mail-sender.url")
+    @Value("${mail-sender.url}")
     private String url;
 
     public void addUser(RegistrationDto registrationDto) throws Exception {
