@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title>Mail Sender App</title>
 </head>
 <body>
 <div>
+
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Sign Out</button>
+        </form>
+    </div>
 
     <form th:action="@{/login}" method="post">
         <div class="content no-padding">
