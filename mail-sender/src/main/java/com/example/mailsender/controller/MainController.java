@@ -1,5 +1,8 @@
 package com.example.mailsender.controller;
 
+import com.example.mailsender.model.RegistrationDto;
+import com.example.mailsender.service.RegistrationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,9 @@ import java.util.Map;
 @Controller
 public class MainController {
 
+    @Autowired
+    private RegistrationService registrationService;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -25,8 +31,16 @@ public class MainController {
     }
 
     @PostMapping("/registration")
-    public String postRegistration(){
-        return "home";
+    public String postRegistration(RegistrationDto registrationDto){
+
+        try {
+            registrationService.addUser(registrationDto);
+        } catch (Exception e){
+            e.printStackTrace();
+            return "registration";
+        }
+
+        return "login";
     }
 
     @GetMapping("/")

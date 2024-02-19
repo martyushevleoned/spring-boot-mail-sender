@@ -17,14 +17,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    private Optional<User> findByUsername(String username) {
-        return Optional.ofNullable(userRepository.findByUsername(username));
-    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(
+        User user = Optional.ofNullable(userRepository.findByUsername(username)).orElseThrow(() -> new UsernameNotFoundException(
                 String.format("Пользователь '%s' не найден", username)
         ));
 

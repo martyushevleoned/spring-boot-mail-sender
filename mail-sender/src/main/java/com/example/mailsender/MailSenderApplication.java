@@ -19,6 +19,6 @@ public class MailSenderApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		userService.createNewUser(new User("123","123","123"));
+		userService.createNewUser(new User("123", null,"123","123"));
 	}
 }

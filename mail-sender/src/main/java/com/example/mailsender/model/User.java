@@ -13,8 +13,9 @@ import java.util.Set;
 @Getter
 public class User {
 
-    public User(String email, String username, String password) {
+    public User(String email, String emailActivationCode, String username, String password) {
         this.email = email;
+        this.emailActivationCode = emailActivationCode;
         this.username = username;
         this.password = password;
     }
