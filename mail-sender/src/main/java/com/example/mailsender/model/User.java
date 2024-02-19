@@ -13,6 +13,12 @@ import java.util.Set;
 @Getter
 public class User {
 
+    public User(String email, String username, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,9 +34,11 @@ public class User {
     @Column(columnDefinition = "text", unique = true, nullable = false)
     private String username;
 
+    @Setter
     @Column(columnDefinition = "text", nullable = false)
     private String password;
 
+    @Setter
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
