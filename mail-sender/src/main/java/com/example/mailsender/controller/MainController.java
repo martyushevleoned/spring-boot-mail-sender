@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
@@ -58,6 +59,14 @@ public class MainController {
         model.addAllAttributes(map);
 
         return "info";
+    }
+
+    @GetMapping("/activate/{code}")
+    public String activationCode(@PathVariable String code){
+
+        registrationService.activateUser(code);
+
+        return "home";
     }
 
 }
