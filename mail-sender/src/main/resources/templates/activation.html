@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sign Out</button>
+    </form>
+</div>
+
+<div><span>Почта успешно подтверждена</span></div>
+<div><a href="/info">info</a></div>
+<div><a href="/login">login</a></div>
+<div><a href="/registration">registration</a></div>
+
+</body>
+</html>

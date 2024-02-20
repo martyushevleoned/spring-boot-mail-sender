@@ -64,9 +64,12 @@ public class MainController {
     @GetMapping("/activate/{code}")
     public String activationCode(@PathVariable String code){
 
-        registrationService.activateUser(code);
-
-        return "home";
+        try {
+            registrationService.activateUser(code);
+        } catch (Exception e){
+            return "home";
+        }
+        return "activation";
     }
 
 }

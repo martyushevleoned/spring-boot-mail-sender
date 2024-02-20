@@ -70,7 +70,7 @@ public class RegistrationService {
         System.out.println("{EQ");
     }
 
-    public void activateUser(String code) {
+    public void activateUser(String code) throws IllegalArgumentException{
 
         User user = Optional.ofNullable(userRepository.findByEmailActivationCode(code)).orElseThrow(() ->
                 new IllegalArgumentException("Пользователь не найден")
